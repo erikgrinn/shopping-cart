@@ -33,7 +33,6 @@ function Cards() {
   return (
     <>
       <div className={styles.cardsContainer}>
-        <div className={styles.cards}>
           {fakeStoreData.map((item) => (
             <div className={styles.card} key={item.title}>
               <img src={item.image} alt={item.title} width={120} height={120} />
@@ -41,7 +40,6 @@ function Cards() {
             </div>
           ))}
         </div>
-      </div>
     </>
   );
 }
