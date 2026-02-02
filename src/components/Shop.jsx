@@ -4,14 +4,20 @@ import { useOutletContext } from "react-router";
 import styles from "../styles/cards.module.css";
 
 function Cards() {
-  const [fakeStoreData, setFakeStoreData, cartNumber, setCartNumber] = useOutletContext();
+  const { fakeStoreData, setFakeStoreData, cartData, setCartData } = useOutletContext();
   function handleClick(e) {
     let buttonType = e.target.textContent;
     if (buttonType === "-") {
-      if (cartNumber == 0) return;
-      setCartNumber((prevCount) => prevCount - 1);
+      if (cartData.number == 0) return;
+      setCartData((prev) => ({
+        ...prev,
+        number: prev.number - 1,
+      }));
     } else if (buttonType === "+") {
-      setCartNumber((prevCount) => prevCount + 1);
+      setCartData((prev) => ({
+        ...prev,
+        number: prev.number + 1,
+      }));
     }
     //   const cardName = event.currentTarget.querySelector("img").alt;
     //   const newClickedCards = [...clickedCards, cardName];
@@ -46,3 +52,5 @@ function Cards() {
 }
 
 export default Cards;
+
+// using object instead of array for context would avoid mistakes probably - also mimics props

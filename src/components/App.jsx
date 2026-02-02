@@ -3,11 +3,11 @@ import { Outlet, useOutletContext } from "react-router";
 
 export default function App() {
   const [fakeStoreData, setFakeStoreData] = useState([]);
-  const [cartNumber, setCartNumber] = useOutletContext()
+  const {cartData, setCartData} = useOutletContext()
 
   return (
     <>
-      <Outlet context={[fakeStoreData, setFakeStoreData, cartNumber, setCartNumber]} />
+      <Outlet context={{fakeStoreData, setFakeStoreData, cartData, setCartData}} />
     </>
   );
 }

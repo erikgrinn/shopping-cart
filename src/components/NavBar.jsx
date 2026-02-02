@@ -2,7 +2,7 @@ import { useState } from "react";
 import { NavLink, Outlet } from "react-router";
 
 function NavBar() {
-  const [cartNumber, setCartNumber] = useState(0);
+  const [cartData, setCartData] = useState({number: 0});
   return (
     <>
       <nav>
@@ -10,9 +10,9 @@ function NavBar() {
         <span>|</span>
         <NavLink to={"/shop"}>Shop</NavLink>
         <span>|</span>
-        <NavLink to={"/cart"}>Cart ({cartNumber})</NavLink>
+        <NavLink to={"/cart"}>Cart ({cartData.number})</NavLink>
       </nav>
-      <Outlet context={[cartNumber, setCartNumber]} />
+      <Outlet context={{cartData, setCartData}} />
     </>
   );
 }
