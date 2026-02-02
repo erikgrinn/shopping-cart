@@ -4,8 +4,7 @@ import { useOutletContext } from "react-router";
 import styles from "../styles/cards.module.css";
 
 function Cards() {
-  const [fakeStoreData, setFakeStoreData] = useOutletContext();
-
+  const [fakeStoreData, setFakeStoreData, cartNumber, setCartNumber] = useOutletContext();
   function handleClick() {
     return;
     //   const cardName = event.currentTarget.querySelector("img").alt;
@@ -36,10 +35,10 @@ function Cards() {
       <div className={styles.cardsContainer}>
         <div className={styles.cards}>
           {fakeStoreData.map((item) => (
-            <button className={styles.card} key={item.title} onClick={handleClick}>
+            <div className={styles.card} key={item.title}>
               <img src={item.image} alt={item.title} width={120} height={120} />
               <div>{item.title}</div>
-            </button>
+            </div>
           ))}
         </div>
       </div>

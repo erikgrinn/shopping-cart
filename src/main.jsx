@@ -11,12 +11,13 @@ import App from "./components/App";
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
-      <NavBar />
       <Routes>
-        <Route index element={<Home />} />
-        <Route element={<App />}>
-          <Route path="shop" element={<Shop />} />
-          <Route path="cart" element={<Cart />} />
+        <Route element={<NavBar />}>
+          <Route index element={<Home />} />
+          <Route element={<App />}>
+            <Route path="shop" element={<Shop />} />
+            <Route path="cart" element={<Cart />} />
+          </Route>
         </Route>
       </Routes>
     </BrowserRouter>
