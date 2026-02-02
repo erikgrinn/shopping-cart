@@ -5,8 +5,14 @@ import styles from "../styles/cards.module.css";
 
 function Cards() {
   const [fakeStoreData, setFakeStoreData, cartNumber, setCartNumber] = useOutletContext();
-  function handleClick() {
-    return;
+  function handleClick(e) {
+    let buttonType = e.target.textContent;
+    if (buttonType === "-") {
+      if (cartNumber == 0) return;
+      setCartNumber((prevCount) => prevCount - 1);
+    } else if (buttonType === "+") {
+      setCartNumber((prevCount) => prevCount + 1);
+    }
     //   const cardName = event.currentTarget.querySelector("img").alt;
     //   const newClickedCards = [...clickedCards, cardName];
   }
@@ -16,16 +22,7 @@ function Cards() {
       const response = await fetch("https://fakestoreapi.com/products");
       const data = await response.json();
 
-      console.log(data);
-      const detailedData = [];
-      for (let item of data) {
-        const { title, image } = item;
-        detailedData.push({
-          title,
-          image,
-        });
-      }
-      setFakeStoreData(detailedData);
+      setFakeStoreData(data);
     }
     fetchData();
   }, []);
@@ -36,9 +33,9 @@ function Cards() {
         {fakeStoreData.map((item) => (
           <div className={styles.card} key={item.title}>
             <div className={styles.topCard}>
-              <button>-</button>
+              <button onClick={handleClick}>-</button>
               <img src={item.image} alt={item.title} width={120} height={120} />
-              <button>+</button>
+              <button onClick={handleClick}>+</button>
             </div>
             <div>{item.title}</div>
           </div>
