@@ -1,12 +1,12 @@
 import { useState } from "react";
-import Shop from "./Shop";
+import { Outlet } from "react-router";
 
 export default function App() {
   const [fakeStoreData, setFakeStoreData] = useState([]);
 
   return (
     <>
-      <Shop fakeStoreData={fakeStoreData} setFakeStoreData={setFakeStoreData} />
+      <Outlet context={[fakeStoreData, setFakeStoreData]} />
     </>
   );
 }

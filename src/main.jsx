@@ -14,8 +14,10 @@ createRoot(document.getElementById("root")).render(
       <NavBar />
       <Routes>
         <Route index element={<Home />} />
-        <Route path="shop" element={<App />} />
-        <Route path="cart" element={<Cart />} />
+        <Route element={<App />}>
+          <Route path="shop" element={<Shop />} />
+          <Route path="cart" element={<Cart />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   </StrictMode>,

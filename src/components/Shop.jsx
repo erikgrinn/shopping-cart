@@ -1,8 +1,11 @@
 import { useEffect } from "react";
+import { useOutletContext } from "react-router";
 
 import styles from "../styles/cards.module.css";
 
-function Cards({ fakeStoreData, setFakeStoreData }) {
+function Cards() {
+  const [fakeStoreData, setFakeStoreData] = useOutletContext();
+
   function handleClick() {
     return;
     //   const cardName = event.currentTarget.querySelector("img").alt;
