@@ -33,13 +33,17 @@ function Cards() {
   return (
     <>
       <div className={styles.cardsContainer}>
-          {fakeStoreData.map((item) => (
-            <div className={styles.card} key={item.title}>
+        {fakeStoreData.map((item) => (
+          <div className={styles.card} key={item.title}>
+            <div className={styles.topCard}>
+              <button>-</button>
               <img src={item.image} alt={item.title} width={120} height={120} />
-              <div>{item.title}</div>
+              <button>+</button>
             </div>
-          ))}
-        </div>
+            <div>{item.title}</div>
+          </div>
+        ))}
+      </div>
     </>
   );
 }
