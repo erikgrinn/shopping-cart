@@ -3,18 +3,22 @@ import { useOutletContext } from "react-router";
 
 import styles from "../styles/cards.module.css";
 
-function Cards() {
+function Shop() {
   const { fakeStoreData, setFakeStoreData, cartData, setCartData } = useOutletContext();
   function handleClick(e) {
     const id = e.target.value;
     const current = cartData[id] || 0;
     if (e.target.textContent === "-") {
       if (current === 0) return;
-      setCartData((prev) => ({
-        ...prev,
-        number: prev.number - 1,
-        [id]: current - 1,
-      }));
+      setCartData((prev) => {
+        const updated = {
+          ...prev,
+          number: prev.number - 1,
+          [id]: current - 1,
+        };
+        // Remove properties with value <= 0
+        return Object.fromEntries(Object.entries(updated).filter(([key, value]) => key === "number" || value > 0));
+      });
     } else if (e.target.textContent === "+") {
       setCartData((prev) => ({
         ...prev,
@@ -34,6 +38,8 @@ function Cards() {
     }
     fetchData();
   }, []);
+
+  console.log(cartData);
 
   return (
     <>
@@ -58,6 +64,6 @@ function Cards() {
   );
 }
 
-export default Cards;
+export default Shop;
 
 // using object instead of array for context would avoid mistakes probably - also mimics props
