@@ -40,6 +40,7 @@ function Cards() {
       <div className={styles.cardsContainer}>
         {fakeStoreData.map((item) => (
           <div className={styles.card} key={item.title}>
+            <div className={styles.quantityCard}>{cartData[item.id] || 0}</div>
             <div className={styles.topCard}>
               <button value={item.id} onClick={handleClick}>
                 -
