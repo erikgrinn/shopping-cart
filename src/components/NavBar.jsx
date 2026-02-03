@@ -12,9 +12,9 @@ function NavBar() {
           Home
         </NavLink>
         <span>|</span>
-        <NavLink to="/shopping-cart/shop">Shop</NavLink>
+        <NavLink to="/shopping-cart/shop/">Shop</NavLink>
         <span>|</span>
-        <NavLink to="/shopping-cart/cart">Cart ({cartData.number})</NavLink>
+        <NavLink to="/shopping-cart/cart/">Cart ({cartData.number})</NavLink>
       </nav>
       <Outlet context={{ fakeStoreData, setFakeStoreData, cartData, setCartData }} />
     </>
